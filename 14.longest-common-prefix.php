@@ -17,13 +17,14 @@ class Solution
     {
         $prefix = '';
 
-        for ($i = 0, $a = strlen($strs[0]); $i < $a; $i++) {
+        $min = min(array_map('strlen', $strs));
+        if (!$min) {
+            return $prefix;
+        }
+
+        for ($i = 0; $i < $min; $i++) {
             $alpha = $strs[0][$i];
             for ($j = 1, $b = count($strs); $j < $b; $j++) {
-                if (strlen($strs[$j]) < $i) {
-                    return $prefix;
-                }
-
                 if ($strs[$j][$i] !== $alpha) {
                     return $prefix;
                 }
